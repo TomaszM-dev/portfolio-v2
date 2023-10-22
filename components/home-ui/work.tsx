@@ -9,15 +9,22 @@ import {
   SiStripe,
   SiStyledcomponents,
 } from "react-icons/si";
-import { BsFiletypeSql, BsGithub, BsLinkedin } from "react-icons/bs";
+import {
+  BsArrowDownLeft,
+  BsFiletypeSql,
+  BsGithub,
+  BsLinkedin,
+} from "react-icons/bs";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { BiLogoReact, BiLineChart, BiLogoJavascript } from "react-icons/bi";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Righteous } from "next/font/google";
 import Image from "next/image";
-import speedRent from "public/speedRent.png";
-import degusto from "public/degusto.png";
+import speedRent from "public/images/projects/speedRent.png";
+import degusto from "public/images/projects/degusto.png";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animations";
 
 const Work = () => {
   const projects = data();
@@ -27,18 +34,23 @@ const Work = () => {
   const photos = useRef([]);
 
   return (
-    <div ref={gallery} className="flex flex-col gap-28  mt-[10rem]">
+    <div ref={gallery} className="flex flex-col gap-[7rem]  mt-[7rem]">
       {projects.map((project, i) => (
         <div
           data-scroll
-          data-scroll-speed="0.2"
+          data-scroll-speed="0.1"
           className={`flex  items-center px-20 gap-20 mx-auto ${
             i === 1 ? "flex-row-reverse" : ""
           }`}
           key={project.info}
         >
-          <div className=" w-[50%]">
-            {/* items */}
+          <motion.div
+            className=" w-[50%]"
+            variants={fadeIn("right", 0.1)}
+            initial="hidden"
+            whileInView={"show"}
+            exit="hidden"
+          >
             <div
               key={project.number}
               className="  flex flex-col justify-center"
@@ -69,13 +81,24 @@ const Work = () => {
                 <TbBrandNextjs />
               </div>
             </div>
-          </div>
-          <div className="w-[50%] ">
+          </motion.div>
+          <motion.div
+            variants={fadeIn("left", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            exit="hidden"
+            className="w-[50%] "
+          >
             <Image className="" alt="" src={project.picture}></Image>
-          </div>
+          </motion.div>
         </div>
       ))}
-      ;
+      <div data-scroll data-scroll-speed="0.1" className="flex flex-col mt-10">
+        <BsArrowDownLeft className="w-[30%] text-[1.7rem]  ml-48  mb-7" />
+        <p className="  pl-10  text-[2rem] border-b-2 w-[80%] mx-auto border-b-slate-100">
+          See More work
+        </p>
+      </div>
     </div>
   );
 };

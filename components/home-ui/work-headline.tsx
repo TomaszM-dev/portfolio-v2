@@ -36,7 +36,7 @@ const WorkHeadline = () => {
     });
   };
   return (
-    <div className="h-[20rem] overflow-x-hidden relative ">
+    <div className="h-[16rem] mt-20 overflow-x-hidden relative ">
       <h2
         ref={textSlide}
         className="absolute  whitespace-nowrap z-10  top-0 left-[-15%]  font-bold text-[13rem] uppercase text-[#EDEDED] "

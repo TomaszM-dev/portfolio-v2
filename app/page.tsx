@@ -1,5 +1,6 @@
 "use client";
 import About from "@/components/home-ui/about";
+import Gallery from "@/components/home-ui/gallery";
 import Hero from "@/components/home-ui/hero";
 import Work from "@/components/home-ui/work";
 import WorkHeadline from "@/components/home-ui/work-headline";
@@ -31,6 +32,7 @@ export default function Home() {
       <About />
       <WorkHeadline />
       <Work />
+      <Gallery />
     </div>
   );
 }
