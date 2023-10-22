@@ -40,19 +40,6 @@ const About = () => {
     tl.to(seeMore.current, {
       x: "0",
     });
-
-    // gsap.to(seeMore.current, {
-    //   scrollTrigger: {
-    //     trigger: description.current,
-    //     markers: true,
-    //     scrub: true,
-    // start: `top`,
-    //     end: `+=${window.innerHeight / 1.5}`,
-    //   },
-    //   opacity: 1,
-    //   ease: "none",
-    //   stagger: 0.1,
-    // });
   };
 
   return (

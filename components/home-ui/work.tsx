@@ -93,7 +93,7 @@ const Work = () => {
           </motion.div>
         </div>
       ))}
-      <div data-scroll data-scroll-speed="0.1" className="flex flex-col mt-10">
+      <div className="flex flex-col mt-10">
         <BsArrowDownLeft className="w-[30%] text-[1.7rem]  ml-48  mb-7" />
         <p className="  pl-10  text-[2rem] border-b-2 w-[80%] mx-auto border-b-slate-100">
           See More work
