@@ -6,7 +6,7 @@ import Preloader from "./preloader";
 import { AnimatePresence } from "framer-motion";
 
 const Hydrate = ({ children }: { children: ReactNode }) => {
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {

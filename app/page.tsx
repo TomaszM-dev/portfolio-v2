@@ -1,6 +1,8 @@
 "use client";
 import About from "@/components/home-ui/about";
 import Hero from "@/components/home-ui/hero";
+import Work from "@/components/home-ui/work";
+import WorkHeadline from "@/components/home-ui/work-headline";
 import Preloader from "@/components/preloader/preloader";
 import { AnimatePresence } from "framer-motion";
 
@@ -27,6 +29,8 @@ export default function Home() {
     <div className="">
       <Hero />
       <About />
+      <WorkHeadline />
+      <Work />
     </div>
   );
 }

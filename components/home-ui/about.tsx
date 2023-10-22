@@ -1,22 +1,66 @@
 "use client";
 import { useInView, motion } from "framer-motion";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
+import { useEffect } from "react";
 import { BsArrowDownLeft } from "react-icons/bs";
 import { descText } from "../animations";
 
 const About = () => {
   const description = useRef(null);
+  const seeMore = useRef(null);
   const phrase =
     "I am Tomasz Malocha, 23 year old guy, passionate about creating beautifull and functional websites";
   const isInView = useInView(description);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    createAnimations();
+  }, []);
+
+  const createAnimations = () => {
+    console.log(seeMore);
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: description.current,
+
+        scrub: 0.1,
+        start: `-20% 80%`,
+        end: `bottom 83%`,
+      },
+
+      ease: "none",
+      stagger: 0.01,
+    });
+    tl.from(seeMore.current, {
+      x: "-200",
+    });
+    tl.to(seeMore.current, {
+      x: "0",
+    });
+
+    // gsap.to(seeMore.current, {
+    //   scrollTrigger: {
+    //     trigger: description.current,
+    //     markers: true,
+    //     scrub: true,
+    // start: `top`,
+    //     end: `+=${window.innerHeight / 1.5}`,
+    //   },
+    //   opacity: 1,
+    //   ease: "none",
+    //   stagger: 0.1,
+    // });
+  };
+
   return (
-    <div ref={description} className=" flex  p-20 mt-10 gap-40 relative">
+    <div ref={description} className=" flex p-20 mt-10 gap-40 relative">
       <div className="flex-[45%] relative">
         <p className="uppercase text-[#AAA5A5]">About me</p>
         <p>
           {phrase.split(" ").map((word, index) => {
-            console.log(word);
             return (
               <motion.span
                 key={index}
@@ -36,7 +80,7 @@ const About = () => {
           })}
         </p>
 
-        <BsArrowDownLeft className="text-[1.7rem] mt-[7rem] w-full mb-7" />
+        <BsArrowDownLeft className="text-[1.7rem] mt-[5rem] w-full mb-7" />
       </div>
       <div
         data-scroll
@@ -76,7 +120,10 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="absolute left-0 top-[70%] bg-black text-[1.2rem] text-white w-fit px-7 py-5 rounded-br-full rounded-tr-full">
+      <div
+        ref={seeMore}
+        className=" absolute left-0 top-[70%] bg-black text-[1.2rem] text-white    px-7 py-5 rounded-br-full rounded-tr-full w-fit "
+      >
         See More about me
       </div>
     </div>

@@ -20,6 +20,18 @@ export const upDesc = {
     transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.6 },
   },
 };
+export const upProjects = {
+  initial: {
+    opacity: 0,
+
+    y: 100,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+  },
+};
 export const upText = {
   initial: {
     opacity: 0,
