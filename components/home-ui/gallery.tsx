@@ -1,107 +1,118 @@
-import React from "react";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { useTransform, useScroll, motion } from "framer-motion";
-import Lenis from "@studio-freight/lenis";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useRef } from "react";
 
-const images = [
-  "1.png",
-  "2.png",
-  "3.png",
-  "4.png",
-  "5.png",
-  "6.png",
-  "7.png",
-  "8.png",
-  "9.png",
-  "10.png",
-  "11.png",
-  "12.png",
-];
-
-const Gallery = () => {
-  const gallery = useRef(null);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-  const { scrollYProgress } = useScroll({
-    target: gallery,
-    offset: ["start end", "end start"],
-  });
-
-  const { height } = dimension;
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 1]);
-  const y2 = useTransform(scrollYProgress, [0, 3], [0, height * 2]);
-  const y3 = useTransform(scrollYProgress, [0, 4], [0, height * 3.2]);
-  const y4 = useTransform(scrollYProgress, [0, 5], [0, height * 2.8]);
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    const resize = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", resize);
-    requestAnimationFrame(raf);
-
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
+const Example = () => {
   return (
-    // main
-    <div className="">
-      {/* spacer */}
-      <div className="h-[10vh]"></div>
-      {/* gallery */}
-      <div
-        ref={gallery}
-        className="bg-black h-[150vh] relative flex  gap-[2vw] p-[1vw] box-border overflow-hidden
-    "
-      >
-        <Column images={[images[0], images[1], images[2]]} y={y} />
-        <Column images={[images[3], images[4], images[5]]} y={y2} />
-        <Column images={[images[6], images[7], images[8]]} y={y3} />
-        <Column images={[images[9], images[10], images[11]]} y={y4} />
-      </div>
-      {/* spacer */}
-      <div className="h-[10vh] bg-black"></div>
+    <div className="bg-black">
+      <HorizontalScrollCarousel />
     </div>
   );
 };
 
-const Column = ({ images, y }) => {
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "3000px"],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 0.4], ["10%", "-60%"]);
+
   return (
-    // column
-    <motion.div
-      className="relative h-full w-[25%] min-w-[250px] flex flex-col gap-[2vw] [&>*:nth-child(1)]:top-[-25%] [&>*:nth-child(2)]:top-[-25%] [&>*:nth-child(4)]:top-[-25%] [&>*:nth-child(3)]:top-[-25%]"
-      style={{ y }}
+    <section
+      ref={targetRef}
+      className="relative h-[60vh] mt-[0rem]  bg-[#ffffff]"
     >
-      {images.map((src, i) => {
-        return (
-          // imageContainer
-          <div
-            key={i}
-            className=" h-full w-full relative rounded-lg  object-cover "
-          >
-            <Image
-              src={`/images/gallery/${src}`}
-              alt="image"
-              fill
-              className="object-cover"
-            />
-          </div>
-        );
-      })}
-    </motion.div>
+      <div className="relative top-0 flex h-[50vh]  items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-4">
+          {cards.map((card) => {
+            return <Card card={card} key={card.id} />;
+          })}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
-export default Gallery;
+const Card = ({ card }) => {
+  return (
+    <div
+      key={card.id}
+      className="group relative h-[300px] w-[300px] overflow-hidden bg-[#dfdfdf]"
+    >
+      <div
+        style={{
+          backgroundImage: `url(${card.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className=" absolute inset-0 rounded-lg z-0 transition-transform duration-300 group-hover:scale-110"
+      ></div>
+      <div className="absolute inset-0 z-10 grid place-content-center">
+        {/* <p className="bg-gradient-to-br from-white/20 to-white/0 p-5 text-2xl rounded-xl font-black uppercase text-white backdrop-blur-lg"> */}
+        {/* {card.title} */}
+        {/* </p> */}
+      </div>
+    </div>
+  );
+};
+
+export default Example;
+
+const cards = [
+  {
+    url: "/images/gallery/1.png",
+    title: "SpeedRent",
+    id: 1,
+  },
+  {
+    url: "/images/gallery/2.png",
+    title: "DegustoVR",
+    id: 3,
+  },
+  {
+    url: "/images/gallery/3.png",
+    title: "B-designed",
+    id: 2,
+  },
+  {
+    url: "/images/gallery/4.png",
+    title: "Buma As",
+    id: 4,
+  },
+  {
+    url: "/images/gallery/6.png",
+    title: "CryptoBank",
+    id: 6,
+  },
+  {
+    url: "/images/gallery/1.png",
+    title: "SpeedRent",
+    id: 7,
+  },
+  {
+    url: "/images/gallery/2.png",
+    title: "DegustoVR",
+    id: 8,
+  },
+  {
+    url: "/images/gallery/3.png",
+    title: "B-designed",
+    id: 9,
+  },
+  {
+    url: "/images/gallery/4.png",
+    title: "Buma As",
+    id: 10,
+  },
+  {
+    url: "/images/gallery/6.png",
+    title: "CryptoBank",
+    id: 11,
+  },
+  {
+    url: "/images/gallery/7.png",
+    title: "Vikbro",
+    id: 12,
+  },
+];

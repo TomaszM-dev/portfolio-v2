@@ -19,7 +19,6 @@ const Headline = ({ title, info }) => {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        markers: true,
 
         scrub: 0.1,
         start: `-50% 80%`,

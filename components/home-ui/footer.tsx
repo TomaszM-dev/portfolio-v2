@@ -14,7 +14,7 @@ const Footer = ({ info, title }) => {
   return (
     <div
       ref={container}
-      className="bg-black   flex flex-col text-white relative whitespace-nowrap items-center "
+      className="bg-black pt-10  flex flex-col text-white relative whitespace-nowrap items-center overflow-hidden "
     >
       <motion.h2
         ref={textSlide}
@@ -27,7 +27,7 @@ const Footer = ({ info, title }) => {
         initial="hidden"
         whileInView={"show"}
         exit="exit"
-        className="absolute top-[6.9rem] z-10 text-[2rem] w-full text-center whitespace-nowrap"
+        className="absolute top-[9.7rem] z-10 text-[2rem] w-full text-center whitespace-nowrap"
       >
         {sentence1} <br /> {sentence2}
       </motion.p>
@@ -46,7 +46,7 @@ const Footer = ({ info, title }) => {
         <p>LinkedIn</p>
         <p>+48 512 740 494</p>
       </motion.div>
-      <div className="mt-16 w-[93%] h-[1px]  mx-auto bg-[#afafaf4e]"></div>
+      <div className="mt-16 w-[93%] h-[1px]  mx-auto  bg-[#afafaf4e]"></div>
       <div className="flex justify-between w-[93%] mx-auto text-[1.3rem] my-10">
         <p>Code By TomaszM-dev</p>
         <div className="flex gap-4 text-[1.3rem]">

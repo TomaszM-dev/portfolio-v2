@@ -8,11 +8,11 @@ import { AnimatePresence } from "framer-motion";
 const Hydrate = ({ children }: { children: ReactNode }) => {
   const [isHydrated, setIsHydrated] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsHydrated(true);
-    }, 2500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsHydrated(true);
+  //   }, 2500);
+  // }, []);
   return (
     <div>
       <AnimatePresence mode="wait">

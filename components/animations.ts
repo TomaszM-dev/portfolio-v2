@@ -80,3 +80,85 @@ export const fadeIn = (direction: string, delay: number) => {
     },
   };
 };
+
+export const menuSlide = {
+  initial: { x: "calc(100% + 100px)" },
+  enter: { x: "0", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+  exit: {
+    x: "calc(100% + 100px)",
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+  },
+};
+
+export const slide = {
+  initial: { x: 80 },
+  enter: (i) => ({
+    x: 0,
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i },
+  }),
+  exit: (i) => ({
+    x: 80,
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 * i },
+  }),
+};
+
+export const scale = {
+  open: { scale: 1, transition: { duration: 0.3 } },
+  closed: { scale: 0, transition: { duration: 0.4 } },
+};
+
+export const menuVars = {
+  initial: {
+    scaleX: 0,
+  },
+  animate: {
+    scaleX: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.12, 0, 0.39, 0],
+    },
+  },
+
+  exit: {
+    scaleX: 0,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+export const menuLinkVars = {
+  initial: {
+    x: "10vh",
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      ease: [1, 1, 0.36, 1],
+    },
+  },
+  open: {
+    x: "0",
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: [1, 1, 0.36, 1],
+    },
+  },
+};
+
+export const containerVars = {
+  initial: {
+    transition: {
+      staggerChildren: 0.09,
+      staggerDirection: -1,
+    },
+  },
+  open: {
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.09,
+    },
+  },
+};
