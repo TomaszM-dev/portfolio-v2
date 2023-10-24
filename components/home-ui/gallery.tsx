@@ -49,9 +49,9 @@ const Card = ({ card }) => {
         className=" absolute inset-0 rounded-lg z-0 transition-transform duration-300 group-hover:scale-110"
       ></div>
       <div className="absolute inset-0 z-10 grid place-content-center">
-        {/* <p className="bg-gradient-to-br from-white/20 to-white/0 p-5 text-2xl rounded-xl font-black uppercase text-white backdrop-blur-lg"> */}
-        {/* {card.title} */}
-        {/* </p> */}
+        <p className="bg-gradient-to-br from-white/20 to-white/0 p-5 text-2xl rounded-xl font-black uppercase text-white backdrop-blur-lg">
+          {card.title}
+        </p>
       </div>
     </div>
   );

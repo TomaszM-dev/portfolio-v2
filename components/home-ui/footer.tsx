@@ -14,7 +14,7 @@ const Footer = ({ info, title }) => {
   return (
     <div
       ref={container}
-      className="bg-black pt-10  flex flex-col text-white relative whitespace-nowrap items-center overflow-hidden "
+      className="bg-black pt-10 rounded-t-3xl flex flex-col text-white relative whitespace-nowrap items-center overflow-hidden "
     >
       <motion.h2
         ref={textSlide}
