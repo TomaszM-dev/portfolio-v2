@@ -80,17 +80,19 @@ const Hero = () => {
         whileInView="animate"
         exit="exit"
         viewport={{ once: true }}
-        data-scroll
-        data-scroll-speed="0.2"
         className="z-10  whitespace-nowrap mt-[17rem] text-white h-full  w-[740px] flex justify-between mx-auto"
       >
-        <div className="flex flex-col">
+        <div data-scroll data-scroll-speed="0.2" className="flex flex-col">
           <BsArrowDownLeft className="text-[1.7rem]  self-end mb-7" />
           <h1 className="text-[1.5rem]">
             Next.js Full Stack <br /> Developer
           </h1>
         </div>
-        <div className="mt-5 bg-black/90 flex items-center justify-center rounded-full w-28 h-28">
+        <div
+          data-scroll
+          data-scroll-speed="0.2"
+          className="mt-5 bg-black/90 flex items-center justify-center rounded-full w-28 h-28"
+        >
           <h2 className="">
             Based In <br /> Poland
           </h2>
