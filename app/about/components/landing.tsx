@@ -1,41 +1,43 @@
 import Image from "next/image";
 import React from "react";
-import me from "public/images/hero/me.png";
+import about from "public/images/hero/about-hero.png";
 import { BsArrowDownLeft, BsArrowDownRight } from "react-icons/bs";
 import { BsGithub, BsLinkedin, BsInstagram } from "react-icons/bs";
+import { upDesc } from "@/components/animations";
+import { motion } from "framer-motion";
 
 const Landing = () => {
   return (
-    <div className="h-[80vh]  w-full flex items-center overflow-hidden   px-10 ">
-      <p className="text-[15rem] top-[13rem] left-6 whitespace-nowrap absolute uppercase font-bold text-[#f5f4f4] z-1">
-        About Me
-      </p>
-      <div className="w-[48%] h-full relative z-10">
-        <Image
-          fill
-          quality={100}
-          priority={true}
-          src={me}
-          alt=""
-          className="object-cover"
-        />
-        <BsArrowDownRight className="text-[1.7rem] absolute  right-10 top-48 stroke-black stroke-1 " />
-      </div>
-      <div className="w-[60%] flex flex-col px-10  z-10">
-        <h1 className="leading-[3.3rem] mt-40 text-[2.4rem]">
-          Hello I am Tomasz `Malocha and i want to give you a glimpse to my
-          world
-        </h1>
-        <div className="w-[50%] flex flex-col ml-auto gap-2 mt-[6rem]">
-          <p className="self-end uppercase  text-[#a1a1a1]">Social Profiles</p>
-          <p className="bg-[#f5f4f4] w-fit h-[1px]"></p>
-          <div className="flex gap-4 text-[2rem] self-end mt-1">
-            <BsGithub className="text-[black]" />
-            <BsInstagram className="text-[black]" />
-            <BsLinkedin className="text-[black]" />
+    <div
+      data-scroll
+      data-scroll-speed="0.2"
+      className="h-[60vh] w-[75%] px-24  flex flex-col justify-center"
+    >
+      <motion.h1
+        variants={upDesc}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        className="text-[5rem] leading-[4.8rem] font-[600]"
+      >
+        I want to give you a glimpse into my world
+      </motion.h1>
+      <motion.div
+        variants={upDesc}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        className=" mt-20 "
+      >
+        <div className="flex flex-col  w-[40%]">
+          <p className="text-[1.4rem] uppercase ">My socials</p>
+          <div className="flex gap-4 text-[1.8rem] mt-2 text-[#7C7B7B] ">
+            <BsGithub />
+            <BsInstagram />
+            <BsLinkedin />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
