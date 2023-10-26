@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   BsArrowDownLeft,
   BsArrowDownRight,
@@ -6,16 +7,46 @@ import {
   BsInstagram,
   BsLinkedin,
 } from "react-icons/bs";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/components/animations";
 
 const ContactPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+      console.log(locomotiveScroll);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        document.body.style.cursor = "default";
+        window.scrollTo(0, 0);
+      }, 2000);
+    })();
+  }, []);
+
   return (
-    <>
-      <h1 className="text-[5rem] px-24 mt-40 leading-[4.6rem] font-[600]">
+    <div className="overflow-hidden">
+      <motion.h1
+        variants={fadeIn("up", 0.4)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true }}
+        className="text-[5rem] px-24 mt-40 leading-[4.6rem] font-[600]"
+      >
         Lets start working <br /> together
-      </h1>
+      </motion.h1>
 
       <BsArrowDownRight className="text-[1.7rem]  w-full  ml-60  mt-28  " />
-      <div className="px-24 flex mt-10 justify-center   gap-40">
+      <motion.div
+        variants={fadeIn("up", 0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true }}
+        className="px-24 flex mt-10 justify-center   gap-40"
+      >
         <form className="w-[80%] h-full flex flex-col ">
           <div className="bg-[#cbcbcb] w-full h-[1px] mb-10"></div>
           <div className="flex flex-col gap-2">
@@ -51,7 +82,7 @@ const ContactPage = () => {
               <label className="text-[1.5rem]">Your message</label>
             </div>
             <textarea
-              className="py-5 px-[3.6rem]   text-[1.3rem]"
+              className=" px-[3.6rem]   text-[1.3rem]"
               type="text"
               placeholder="Hey Tomasz..."
               required
@@ -85,7 +116,7 @@ const ContactPage = () => {
             <p>LinkedIn</p>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="bg-black text-white text-[1.2rem] px-10 py-8 items-center mt-28 flex justify-between">
         <p className="">Code by TomaszM-dev</p>
         <div className="flex gap-4 text-[1.4rem]">
@@ -94,7 +125,7 @@ const ContactPage = () => {
           <BsInstagram />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

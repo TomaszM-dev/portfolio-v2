@@ -15,6 +15,7 @@ const Landing = () => {
     >
       <motion.h1
         variants={upDesc}
+        viewport={{ once: true }}
         initial="initial"
         whileInView="animate"
         exit="exit"
@@ -23,6 +24,7 @@ const Landing = () => {
         I want to give you a glimpse into my world
       </motion.h1>
       <motion.div
+        viewport={{ once: true }}
         variants={upDesc}
         initial="initial"
         whileInView="animate"

@@ -1,20 +1,49 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import { BsArrowDownRight } from "react-icons/bs";
+import { motion, useInView } from "framer-motion";
+import { descText, fadeIn } from "@/components/animations";
 
 const Experience = () => {
+  const container = useRef(null);
+  const isInView = useInView(container);
+
+  const phrase =
+    "The will to win, the desire to succeed, the urge to reach your full potential… these are the keys that will unlock the door to personal excellence.” - Confucius";
+
   return (
-    <div className=" w-full mt-28 flex flex-col  px-10">
+    <div ref={container} className=" w-full mt-28 flex flex-col px-10">
       <h3 className="text-end text-[2rem]  w-[80%]  font-bold  self-end">
-        The will to win, the desire to succeed, the urge to reach your full
-        potential…these are the keys that will unlock the door to personal
-        excellence.” - Confucius
+        {phrase.split(" ").map((word, index) => {
+          return (
+            <motion.span
+              key={index}
+              className="text-[1.9rem]  relative overflow-hidden inline-flex ml-1"
+            >
+              <motion.span
+                variants={descText}
+                custom={index}
+                animate={isInView ? "open" : "closed"}
+                key={index}
+                className=""
+              >
+                {word}
+              </motion.span>
+            </motion.span>
+          );
+        })}
       </h3>
       <div className="flex gap-10  mt-28 text-[2rem]">
         <p> My experience</p>
         <BsArrowDownRight className="mt-4" />
       </div>
       <div className="flex gap-10 mx-auto">
-        <div className="relative w-[30rem] h-[16rem]  mt-20 overflow-hidden flex items-center justify-center px-8 ">
+        <motion.div
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          className="relative w-[30rem] h-[16rem]  mt-20 overflow-hidden flex items-center justify-center px-8 "
+        >
           <div className="flex flex-col  text-[1.6rem]  ">
             <h4 className=" ">
               01 <span className="ml-4 "></span>Tech Internship from School 2019
@@ -26,8 +55,13 @@ const Experience = () => {
           </div>
           <div className="w-[60%] h-[60%] border-t-[2px] rounded-tl-3xl  border-l-[2px] absolute top-0 bottom-auto right-auto left-0 "></div>
           <div className="w-[60%] h-[60%] border-b-[2px] rounded-br-3xl  border-r-[2px] absolute top-auto bottom-0 right-0 left-auto "></div>
-        </div>
-        <div className="relative w-[60%]   mt-20 overflow-hidden flex items-center justify-center px-8 ">
+        </motion.div>
+        <motion.div
+          variants={fadeIn("left", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          className="relative w-[60%]   mt-20 overflow-hidden flex items-center justify-center px-8 "
+        >
           <div className=" flex flex-col  text-[1.6rem]  ">
             <h4 className=" ">
               02 <span className="ml-4 "></span>Project Leader in Buma AS
@@ -44,7 +78,7 @@ const Experience = () => {
           </div>
           <div className="w-[60%] h-[60%] border-b-[2px] rounded-bl-3xl  border-l-[2px] absolute top-auto bottom-0 right-auto left-0 "></div>
           <div className="w-[60%] h-[60%] border-t-[2px] rounded-tr-3xl  border-r-[2px] absolute top-0 bottom-auto right-0 left-auto "></div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
