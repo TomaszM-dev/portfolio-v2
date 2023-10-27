@@ -1,4 +1,5 @@
 import Navbar from "@/components/nav";
+import PageAnim from "@/components/page-anim";
 import Hydrate from "@/components/preloader/hydrate";
 import { AnimatePresence } from "framer-motion";
 import type { Metadata } from "next";
